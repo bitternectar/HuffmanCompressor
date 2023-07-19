@@ -1,0 +1,7 @@
+LocalDateTime now() Method in Java with Examples
+
+geeksforgeeks.org
+https://www.geeksforgeeks.org › ...
+·
+Перевести эту страницу
+21 янв. 2019 г. — now() method of a LocalDateTime class used to obtain the current date-time from the system clock in the default time-zone.This method will ...

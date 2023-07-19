@@ -1,0 +1,44 @@
+@startuml
+
+package Archiver {
+  interface IEncoder {
+    + compress(byte[] data, String fileExtension): byte[]
+  }
+
+  interface IDecoder {
+    + decompress(byte[] data): byte[]
+  }
+
+  class HuffmanEncoder {
+    + compress(byte[] data, String fileExtension): byte[]
+  }
+
+  class HuffmanDecoder {
+    + decompress(byte[] data): byte[]
+  }
+
+  abstract class Archiver {
+    - encoder: IEncoder
+    - decoder: IDecoder
+
+    {abstract} + archiveFiles(ArrayList<File> files)
+    {abstract} + extractFiles(File file)
+  }
+
+  class HuffmanArchiver {
+    + archiveFiles(ArrayList<File> files)
+    + extractFiles(File file)
+  }
+}
+
+MainForm --> "Archiver.Archiver" : Creates instance
+
+Archiver.Archiver <|-- HuffmanArchiver
+
+Archiver.Archiver --> IEncoder : Creates instance
+Archiver.Archiver --> "IDecoder" : Creates instance
+
+IEncoder <|.. HuffmanEncoder
+IDecoder <|.. HuffmanDecoder
+
+@enduml
